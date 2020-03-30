@@ -26,6 +26,6 @@ RUN apt-get update && apt-get install -y default-jdk maven
 ADD . /usr/local/docker-git-hello-world
 
 # Maven assembly will package the project into a JAR FILE which can be executed
-RUN cd /usr/local/docker-git-hello-world && mvn assembly:assembly
+RUN cd /usr/local/docker-git-hello-world && mvn clean install && mvn assembly:assembly
 
 CMD ["java", "-cp", "/usr/local/docker-git-hello-world/target/docker-git-hello-world-0.0.1-SNAPSHOT-jar-with-dependencies.jar", "org.sbenturkia.docker.HelloWorldPing"]
